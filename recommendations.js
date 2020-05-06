@@ -1,5 +1,5 @@
 var api_key1 = "8015d3952263abaa7d04e41107994526"
-var api_key2 = "368220-umdb-OO5NRIBR"
+var api_key2 = "&k=368220-umdb-OO5NRIBR"
 
 $(".button").on("click", function(){
     var movie = $(".movie-search").val();
@@ -19,6 +19,9 @@ function omdb(searchParam){
         var queryDiv = $(".query-result");
         queryDiv.empty();
         var title = response.Title;
+        console.log(title);
+        var titleNoSpace = title.replace(/\s/g, "");
+        console.log(titleNoSpace);
         var titleTag = $("<p>").text("Title: " + title);
         queryDiv.append(titleTag);
         var year = response.Year;
@@ -36,20 +39,17 @@ function omdb(searchParam){
         queryDiv.append(plotTag);
         var image = $("<img>").attr("src", moviePoster);
         queryDiv.append(image);
-        recommendMovies(title);
+        var queryURL2 = "https://tastedive.com/api/similar?q=" + title + api_key2;
+            $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function(response){
+            console.log(response);
     })
-
-function recommendMovies(searchItem) {
-    var queryURL2 = "https://tastedive.com/api/similar?q=" + title + api_key2;
-    $.ajax({
-        url: queryURL2,
-        method: "GET"
-    }).then(function(repsonse){
-        console.log(response);
     })
 }
     
-}
+
 
 // function movieSearch(param) {
 //     var queryURL2 = "https://api.themoviedb.org/3/movie/550?api_key=" + api_key + "";
