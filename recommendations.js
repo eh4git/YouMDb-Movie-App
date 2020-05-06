@@ -6,7 +6,7 @@ $(".button").on("click", function(){
     omdb(movie);
     
 })
-
+var recommendations = [];
 function omdb(searchParam){
     var queryURL1 = "https://www.omdbapi.com/?t=" + searchParam + "&apikey=trilogy";
     $.ajax({
@@ -14,8 +14,6 @@ function omdb(searchParam){
         method: "GET"
     }).then(function(response){
         console.log(response);
-        // call movieSearch here
-        
         var queryDiv = $(".query-result");
         queryDiv.empty();
         var title = response.Title;
@@ -39,15 +37,29 @@ function omdb(searchParam){
         queryDiv.append(plotTag);
         var image = $("<img>").attr("src", moviePoster);
         queryDiv.append(image);
-        var queryURL2 = "https://tastedive.com/api/similar?q=" + title + api_key2;
+        var queryURL2 = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?q=" + title + api_key2;
             $.ajax({
             url: queryURL2,
             method: "GET"
         }).then(function(response){
             console.log(response);
-    })
-    })
-}
+            for (var i = 0; i < 5; i++) {
+                recommendations[i]= response.Similar.Results[i].Name;
+                console.log(recommendations[i]);
+                var queryURL3 = "https://www.omdbapi.com/?t=" + recommendations[i] + "&apikey=trilogy";
+                $.ajax({
+                    url: queryURL3,
+                    method: "GET"
+                }).then(function(response){
+                 console.log(response);
+                 var moviePoster1 = response.Poster;
+                 var image1 = $("<img>").attr("src", moviePoster1);
+                 $(".query-result").prepend(image1);
+                })
+            }
+        })
+    }
+)}
     
 
 
