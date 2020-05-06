@@ -5,21 +5,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Code Quiz</title>
+        <!-- Bootstrap CSS CDN  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
         <!-- <link rel="stylesheet" href="Assets/style.css"> -->
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    </head>
     <body>
-        <div class ="row"></div>
 
-        <input class="movie-search" value="">
-        <button class="button">Search</button>
-        <div class="row">
-            <h2>Recommendations - Upcoming Movies</h2>
-            <div class = "query-result">
-                
+        <div class="container">
+            <input class="movie-search" value="">
+            <button class="button">Search</button>
+
+            <!-- User Movie Info -->
+            <div class = "query-result"></div>
+
+            <h2>Movie</h2>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="..." class="card-img" alt="..." id="main-image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" id="main-body">
+                    <h5 class="card-title" id="main-title">Card title</h5>
+                    <p class="card-text" id="main-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+                </div>
             </div>
 
-
+            <!-- Recommended Movie Info -->
+            <h2>Similar Movie</h2>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="..." class="card-img" alt="..." id="similar-image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" id="similar-body">
+                    <h5 class="card-title" id="similar-title">Card title</h5>
+                    <p class="card-text" id="similar-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
+
         <script src="recommendations.js"></script>
     </body>
     </html>
