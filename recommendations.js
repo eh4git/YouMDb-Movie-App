@@ -1,6 +1,10 @@
 var api_key1 = "8015d3952263abaa7d04e41107994526"
 var api_key2 = "&k=368220-umdb-OO5NRIBR"
 
+var cardImage = $("#card-image");
+var cardTitle = $(".card-title");
+var cardText = $(".card-text");
+
 $(".button").on("click", function(){
     var movie = $(".movie-search").val();
     omdb(movie);
@@ -53,23 +57,14 @@ function omdb(searchParam){
                 }).then(function(response){
                  console.log(response);
                  var moviePoster1 = response.Poster;
-                 var image1 = $("<img>").attr("src", moviePoster1);
-                 $(".query-result").prepend(image1);
+                //  var image1 = $("<img>").attr("src", moviePoster1);
+                //  $(".query-result").prepend(image1);
+                cardImage.attr("src", moviePoster1);
+                cardTitle.html(response.Title);
+                cardText.html(response.Plot);
                 })
             }
         })
     }
 )}
     
-
-
-// function movieSearch(param) {
-//     var queryURL2 = "https://api.themoviedb.org/3/movie/550?api_key=" + api_key + "";
-//     $.ajax({
-//         url: queryURL2,
-//         method:"GET"
-//     }).then(function(response){
-//         console.log(response);
-//     })
-    
-// }
