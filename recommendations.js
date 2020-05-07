@@ -86,8 +86,14 @@ function RenderMain(omdbResponse){
     var jumboPoster = $('<img id="jumbotronImage">')
     jumboPoster.attr("src", omdbResponse.Poster);
 
+    var trailer = $('<iframe width="80%" height="auto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>')
+    trailer.attr("src", "https://www.youtube.com/embed?listType=search&list=" + omdbResponse.Title + "trailer")
+
     leftCol.append(jumboTitle);
     leftCol.append(jumboText);
+
+    leftCol.append(trailer);
+    
     rightCol.append(jumboPoster);
     mainMovie.append(leftCol);
     mainMovie.append(rightCol);
@@ -98,6 +104,7 @@ function AddRecommended(omdbResponse){
         var div = $('<div class="col-md-4 card-body rounded-lg">');
         var img = $('<img class="cardImg">');
         img.attr("src", omdbResponse.Poster);
+        img.error(function(){div.attr("style", "display: none;")})
         img.attr("movie-name", omdbResponse.Title);
         img.addClass("searchable-movie");
 
