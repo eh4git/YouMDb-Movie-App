@@ -1,25 +1,24 @@
-.input-group{
-    padding: 30px;
-    margin:auto;
-}
+
 h5,p{
     color:blue;
 }
-/* @media screen and (min-width: 480px) {
-    #searchAreaDiv {
-      min-width: 400px;
-      width: 400px;
-    }
- input.form-control{
-     width: 100%;
- }
-
-    } */
 #jumbotronImage{
     width: 70%;
 }
 .cardImg{
     margin:5px;
     width: 100%;
-
+}
+#searchAreaDiv{
+    padding: 40px;
+}
+#searchedMovieH3{
+    margin-top: 60px;
+    color: white;
+}
+.searchedMovieBtns{
+    margin-top: 10px;
+}
+.historyBtn{
+    background-color:#E9ECEF;
 }
