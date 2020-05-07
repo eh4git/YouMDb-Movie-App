@@ -1,18 +1,15 @@
 var api_key1 = "8015d3952263abaa7d04e41107994526"
 var api_key2 = "&k=368220-umdb-OO5NRIBR"
 
-var movieDiv = $(".movie-div");
-var recommendationsDiv = $(".recommendations-div");
+var mainMovie = $("#main-jumbo");
+var displayRecommendations = $("#recommendations");
 
 var recommendations = [];
-var numberOfRecommendations = 5;
 var alreadySearched = false;
 
-$(".button").on("click", function(){
-    if(alreadySearched){
-        movieDiv.empty();
-        recommendationsDiv.empty();
-    }
+$("#search-button").on("click", function(){
+    console.log("Search Button");
+
     alreadySearched = true;
 
     var movie = $(".movie-search").val();
@@ -26,37 +23,61 @@ $(".button").on("click", function(){
 })
 
 function createCard(omdbResponse){
+    // var cardDiv = $('<div class="card mb-3" style="max-width: 540px;">');
+    // var rowDiv = $('<div class="row no-gutters">');
+    // var leftCol = $('<div class="col-md-4">');
+    // var rightCol = $('<div class="col-md-8">');
+    // var img = $('<img src="..." class="card-img" alt="...">');
+    // img.attr("src", omdbResponse.Poster);
+    // var cardBody = $('<div class="card-body" id="main-body">');
+    // var cardTitle = $('<h5 class="card-title" id="main-title"></h5>');
+    // cardTitle.text(omdbResponse.Title);
+    // var cardText = $('<p class="card-text" id="main-text"></p>');
+    // cardText.text(omdbResponse.Plot);
+    // var infoText = "Rated: " + omdbResponse.Rated + " Released: " + omdbResponse.Year;
+    // var cardInfo = $('<p class="card-text"><small class="text-muted">' + infoText + '</small></p>');
 
-    var cardDiv = $('<div class="card mb-3" style="max-width: 540px;">');
-    var rowDiv = $('<div class="row no-gutters">');
-    var leftCol = $('<div class="col-md-4">');
-    var rightCol = $('<div class="col-md-8">');
-    var img = $('<img src="..." class="card-img" alt="...">');
-    img.attr("src", omdbResponse.Poster);
-    var cardBody = $('<div class="card-body" id="main-body">');
-    var cardTitle = $('<h5 class="card-title" id="main-title"></h5>');
-    cardTitle.text(omdbResponse.Title);
-    var cardText = $('<p class="card-text" id="main-text"></p>');
-    cardText.text(omdbResponse.Plot);
-    var infoText = "Rated: " + omdbResponse.Rated + " Released: " + omdbResponse.Year;
-    var cardInfo = $('<p class="card-text"><small class="text-muted">' + infoText + '</small></p>');
-
-    cardBody.append(cardTitle);
-    cardBody.append(cardInfo);
-    cardBody.append(cardText);
-    rightCol.append(cardBody);
-    leftCol.append(img);
-    rowDiv.append(leftCol);
-    rowDiv.append(rightCol);
-    cardDiv.append(rowDiv);
+    // cardBody.append(cardTitle);
+    // cardBody.append(cardInfo);
+    // cardBody.append(cardText);
+    // rightCol.append(cardBody);
+    // leftCol.append(img);
+    // rowDiv.append(leftCol);
+    // rowDiv.append(rightCol);
+    // cardDiv.append(rowDiv);
     
-    return cardDiv;
+    // return cardDiv;
+}
 
-    // // var titleTag = $("<p>").text("Title: " + title);
-    // // var yearTag = $("<p>").text("Released: " + year);
-    // // var ratingTag = $("<p>").text("Rated: " + rating);
-    // // var genreTag = $("<p>").text("Genre: " + genre);
-    // // var plotTag = $("<p>").text("Plot: " + plot);
+function RenderMain(omdbResponse){
+
+    if(alreadySearched) mainMovie.empty();
+
+    var leftCol = $('<div class="col-8">');
+    var rightCol = $('<div class="col-4">');
+    var jumboTitle = $('<h1 class="display-4">');
+    jumboTitle.text(omdbResponse.Title);
+    var jumboText = $('<p class="lead">')
+    jumboText.text(omdbResponse.Plot);
+    var jumboPoster = $('<img id="jumbotronImage">')
+    jumboPoster.attr("src", omdbResponse.Poster);
+
+    leftCol.append(jumboTitle);
+    leftCol.append(jumboText);
+    rightCol.append(jumboPoster);
+    mainMovie.append(leftCol);
+    mainMovie.append(rightCol);
+}
+
+function AddRecommended(omdbResponse){
+
+        var div = $('<div class="col-md-4 card-body rounded-lg">');
+        var img = $('<img class="cardImg">')
+        img.attr("src", omdbResponse.Poster)
+
+        div.append(img);
+
+        displayRecommendations.append(div);
 
 }
 
@@ -68,11 +89,13 @@ function tasteDive(movieName){
     }).then(function(tasteDiveResponse){
         console.log("Taste Dive:");
         console.log(tasteDiveResponse);
-
-        for (var i = 0; i < numberOfRecommendations; i++) {
+        
+        displayRecommendations.empty();
+        // secondRowRecommended.empty();
+        for (var i = 0; i < tasteDiveResponse.Similar.Results.length; i++) {
             recommendations[i] = tasteDiveResponse.Similar.Results[i].Name;
-            console.log(recommendations[i]);
 
+            if(!recommendations[i]) console.log("Taste Dive Missing Result");
             omdb(recommendations[i], "recommend");
         }
     
@@ -86,8 +109,8 @@ function omdb(movieName, target){
         url: omdbURL,
         method: "GET",
     }).then(function(omdbResponse){
-        console.log("OMDB:");
-        console.log(omdbResponse);
+        // console.log("OMDB:");
+        // console.log(omdbResponse);
 
         //Prevent displaying responses with no content
         if(!omdbResponse.Poster) {
@@ -95,9 +118,9 @@ function omdb(movieName, target){
             return;
         }
 
-        if(target == "main") movieDiv.append(createCard(omdbResponse));
-        else if(target == "recommend") recommendationsDiv.append(createCard(omdbResponse));
-        else console.log("Error");
+        if(target == "main") RenderMain(omdbResponse);
+        else if(target == "recommend") AddRecommended(omdbResponse);
+        else console.log("No Target");
     })
 }
 
