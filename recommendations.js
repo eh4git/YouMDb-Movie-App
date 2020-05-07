@@ -7,20 +7,44 @@ var displayRecommendations = $("#recommendations");
 var recommendations = [];
 var alreadySearched = false;
 
+var searchHistory = [];
+
 $("#search-button").on("click", function(){
     console.log("Search Button");
+    var movie = $(".movie-search").val();
+    Search(movie);
+    $(".movie-search").val("");
+})
+
+$(document).on("click", ".searchable-movie", function(event){
+    console.log("Recommended Movie clicked " + event.target.getAttribute("movie-name"));
+    var movie = event.target.getAttribute("movie-name");
+    Search(movie);
+})
+
+function AddSearchHistory(title){
+    if(!searchHistory[searchHistory.indexOf(title)]){
+        // console.log(searchHistory[])
+
+        searchHistory.push(title);
+        var newItem = $('<li class="historyBtn list-group-item">');
+        newItem.html(title);
+        newItem.addClass("searchable-movie");
+        newItem.attr("movie-name", title);
+        $("#search-history").prepend(newItem);
+    }
+}
+
+function Search(movie){
 
     alreadySearched = true;
-
-    var movie = $(".movie-search").val();
 
     //Create Card for Movie user submitted
     omdb(movie, "main");
 
     //Create Cards for Movies similar to user submitted (numberOfRecommendations)
     tasteDive(movie);
-    
-})
+}
 
 function createCard(omdbResponse){
     // var cardDiv = $('<div class="card mb-3" style="max-width: 540px;">');
@@ -72,8 +96,10 @@ function RenderMain(omdbResponse){
 function AddRecommended(omdbResponse){
 
         var div = $('<div class="col-md-4 card-body rounded-lg">');
-        var img = $('<img class="cardImg">')
-        img.attr("src", omdbResponse.Poster)
+        var img = $('<img class="cardImg">');
+        img.attr("src", omdbResponse.Poster);
+        img.attr("movie-name", omdbResponse.Title);
+        img.addClass("searchable-movie");
 
         div.append(img);
 
@@ -91,7 +117,6 @@ function tasteDive(movieName){
         console.log(tasteDiveResponse);
         
         displayRecommendations.empty();
-        // secondRowRecommended.empty();
         for (var i = 0; i < tasteDiveResponse.Similar.Results.length; i++) {
             recommendations[i] = tasteDiveResponse.Similar.Results[i].Name;
 
@@ -118,10 +143,14 @@ function omdb(movieName, target){
             return;
         }
 
-        if(target == "main") RenderMain(omdbResponse);
+        if(target == "main") {
+            RenderMain(omdbResponse);
+            AddSearchHistory(omdbResponse.Title);
+        }
         else if(target == "recommend") AddRecommended(omdbResponse);
         else console.log("No Target");
     })
 }
+
 
     
