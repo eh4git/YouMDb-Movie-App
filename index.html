@@ -8,40 +8,33 @@
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
     <!--Navbar-->
     <nav class="navbar navbar-light navbar-1 bg-info font-weight-bolder">
         <!-- Navbar brand -->
-        <a class="navbar-brand text-white" href="#"><h1>YouMdB</h1></a>
+        <a class="navbar-brand text-white" href="index.html">
+            <h1>YouMdB</h1>
+        </a>
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
             aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent15">
-            <!-- Links -->
+            <!--Drop down Menu Items-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Saved List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">History</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="list.html">Saved Lists</a>
                 </li>
             </ul>
-            <!-- Links -->
         </div>
-        <!-- Collapsible content -->
     </nav>
     <br>
     <div class="container-fluid">
@@ -49,8 +42,8 @@
         <div class="row">
             <div id="searchAreaDiv"
                 class="col-lg-3 col-md-6 col-xs-12 col-sm-12 col-xl-3 rounded-lg searchArea bg-info container-sm">
-
                 <!-- Search form -->
+                <h3>Search by Movie Title</h3>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Movie Title" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
@@ -62,23 +55,20 @@
                 </div>
                 <div class="row">
                     <!--Make invisible on load and visible when atleast 1 search is submitted-->
-                    <h3 id="searchedMovieH3" class="mx-auto">Searched Movie Title</h3>
-                        <div class="searchedMovieBtns col-md-12">
+                    <h3 id="searchedMovieH3" class="mx-auto">Searched Movie Titles</h3>
+                    <div class="searchedMovieBtns col-md-12">
                         <ul class="list-group mx-auto">
-                            <li class="historyBtn list-group-item active">Cras justo odio</li>
-                            <li class="historyBtn list-group-item">Dapibus ac facilisis in</li>
-                            <li class="historyBtn list-group-item">Morbi leo risus</li>
-                            <li class="historyBtn list-group-item">Porta ac consectetur ac</li>
-                            <li class="historyBtn list-group-item">Vestibulum at eros</li>
+                            <li class="historyBtn list-group-item active">Movie 1</li>
+                            <li class="historyBtn list-group-item">Movie 2</li>
+                            <li class="historyBtn list-group-item">Movie 3</li>
+                            <li class="historyBtn list-group-item">Movie 3</li>
+                            <li class="historyBtn list-group-item">Movie 4</li>
                         </ul>
 
                     </div>
                 </div>
 
             </div>
-            <!-- <div class="col-1">
-
-                    </div> -->
             <div class="col-md-6 col-xs-12 col-sm-12 col-lg-9 col-xl-9">
                 <!--Jumbotron-->
                 <div class="jumbotron jumbotron-fluid rounded-lg">
@@ -90,7 +80,7 @@
                                     of its parent.</p>
                             </div>
                             <div class="col-4">
-                                <img id="jumbotronImage"
+                                <img id="jumbotronImage" class="rounded-lg"
                                     src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg">
                             </div>
                         </div>
@@ -103,32 +93,27 @@
                 </div>
                 <!--Movie Poster Cards-->
                 <div class="row mx-auto">
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class=" rounded-lg cardImg"
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class="rounded-lg cardImg "
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class="rounded-lg cardImg"
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
                 </div>
                 <div class="row mx-auto">
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class="rounded-lg cardImg"
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class="rounded-lg cardImg"
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
-                    <div class="col-md-4 card-body rounded-lg"><img class="cardImg"
+                    <div class="col-md-4 card-body rounded-lg"><img class="rounded-lg cardImg"
                             src="https://images-na.ssl-images-amazon.com/images/I/81LXbGH9ttL._AC_SL1500_.jpg"></div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+    </div>
+    </div>
+    </div>
     <!-- Carousel
     <div class="row">
         <div class="col-12">
