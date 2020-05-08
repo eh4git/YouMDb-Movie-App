@@ -23,6 +23,7 @@ function postHistoryList(){
 $("#search-button").on("click", function(){
     console.log("Search Button");
     var movie = $(".movie-search").val();
+    if(movie.trim() === "") return;
     Search(movie);
     $(".movie-search").val("");
 })
