@@ -9,15 +9,17 @@ This project was a great exercise in utilizing multiple entertainment API's to p
 Column on left side of application contains a search bar which the user can use to search a movie of interest. The search returns information to the user on the movie (plot, gentre, rating, etc.), movie trailer, as well as a list of recommended movie titles that are similar to the movie searched. 
 
 ## Features
-Utilizes the following API's:
+Utilizes the following API's and databases:
 
 TasteDive API - Provides movie recommendations 
 
-Youtube Data API - Provides movie trailers from Youtube
+Youtube Data - Provides movie trailers from Youtube
 
 OMDB API - Returns wide variety of movie information
 
 ## Credits
+Arash Bazrafshan - https://github.com/abazrafshan
+
 Tristan Postley - https://github.com/TristanPostley
 
 Chris Rico - https://github.com/chrisricola
@@ -25,10 +27,10 @@ Chris Rico - https://github.com/chrisricola
 Erik Hirsch - https://github.com/eh4git
 
 ## Credits
-OMDB API - http://www.omdbapi.com/ (created by Brian Fritz)
+OMDB API - http://www.omdbapi.com/api (created by Brian Fritz)
 
 TasteDive API - https://tastedive.com/read/api 
 
-YouTube Data API - https://developers.google.com/youtube/v3
+YouTube Data - https://developers.google.com/youtube/v3
 
 ## Screenshot
