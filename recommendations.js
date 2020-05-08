@@ -7,18 +7,19 @@ var displayRecommendations = $("#recommendations");
 var recommendations = [];
 var alreadySearched = false;
 
-var searchHistory= JSON.parse(localStorage.getItem('savedHistory')) || [];
-
+var searchHistory = JSON.parse(localStorage.getItem('savedHistory')) || [];
+var historyTitles = JSON.parse(localStorage.getItem('historyTitles')) || [];
 
 
 function postHistoryList(){
-    for(i=0;i < searchHistory.length; i++){
+    $("#movieHistoryList").empty();
+    for(var i = 0; i < searchHistory.length; i++){
         console.log(searchHistory[i])
         $("#movieHistoryList").append(createCard(searchHistory[i]))
         
     }
 }
-postHistoryList();
+
 $("#search-button").on("click", function(){
     console.log("Search Button");
     var movie = $(".movie-search").val();
@@ -32,22 +33,47 @@ $(document).on("click", ".searchable-movie", function(event){
     Search(movie);
 })
 
-function AddSearchHistory(title){
-    if(!searchHistory[searchHistory.indexOf(title)]){
-        // console.log(searchHistory[])
+function PopulateSearchHistory(){
 
-        searchHistory.push(title);
+    $("#search-history").empty();
+    for(var i = 0; i < searchHistory.length; i++){
+        //Sidebar list
         var newItem = $('<li class="historyBtn list-group-item">');
-        newItem.html(title);
+        newItem.html(searchHistory[i].Title);
         newItem.addClass("searchable-movie");
-        newItem.attr("movie-name", title);
+        newItem.attr("movie-name", searchHistory[i].Title);
         $("#search-history").prepend(newItem);
+        
     }
+
+}
+
+
+function AddSearchHistory(omdbResponse){
+    if(!historyTitles[historyTitles.indexOf(omdbResponse.Title)]){
+        console.log("New entry to search history")
+
+        searchHistory.push(omdbResponse);
+        historyTitles.push(omdbResponse.Title);
+
+        PopulateSearchHistory();
+
+        //Update local storage
+        localStorage.setItem('savedHistory', JSON.stringify(searchHistory));
+        localStorage.setItem('historyTitles', JSON.stringify(historyTitles));
+
+
+    }
+    else console.log("Title already in search history")
+
 }
 
 function Search(movie){
 
     alreadySearched = true;
+
+    mainMovie.empty();
+    displayRecommendations.empty();
 
     //Create Card for Movie user submitted
     omdb(movie, "main");
@@ -63,6 +89,7 @@ function createCard(omdbResponse){
     var rightCol = $('<div class="col-md-8">');
     var img = $('<img src="..." class="card-img" alt="...">');
     img.attr("src", omdbResponse.Poster);
+    // img.error(function(){cardDiv.attr("style", "display: none;")})
     var cardBody = $('<div class="card-body" id="main-body">');
     var cardTitle = $('<h5 class="card-title" id="main-title"></h5>');
     cardTitle.text(omdbResponse.Title);
@@ -130,8 +157,8 @@ function tasteDive(movieName){
         url: tasteDiveURL,
         method: "GET"
     }).then(function(tasteDiveResponse){
-        console.log("Taste Dive:");
-        console.log(tasteDiveResponse);
+        // console.log("Taste Dive:");
+        // console.log(tasteDiveResponse);
         
         displayRecommendations.empty();
         for (var i = 0; i < tasteDiveResponse.Similar.Results.length; i++) {
@@ -162,11 +189,7 @@ function omdb(movieName, target){
 
         if(target == "main") {
             RenderMain(omdbResponse);
-            AddSearchHistory(omdbResponse.Title);
-            searchHistory.push(omdbResponse)
-          
-            console.log(searchHistory)
-            localStorage.setItem('savedHistory', JSON.stringify(searchHistory));
+            AddSearchHistory(omdbResponse);
         }
         else if(target == "recommend") AddRecommended(omdbResponse);
         else console.log("No Target");
