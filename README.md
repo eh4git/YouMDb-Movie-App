@@ -19,12 +19,16 @@ OMDB API - Returns wide variety of movie information
 
 ## Credits
 Tristan Postley - https://github.com/TristanPostley
+
 Chris Rico - https://github.com/chrisricola
+
 Erik Hirsch - https://github.com/eh4git
 
 ## Credits
 OMDB API - http://www.omdbapi.com/ (created by Brian Fritz)
+
 TasteDive API - https://tastedive.com/read/api 
+
 YouTube Data API - https://developers.google.com/youtube/v3
 
 ## Screenshot
