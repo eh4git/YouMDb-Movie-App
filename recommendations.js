@@ -48,6 +48,7 @@ function PopulateSearchHistory(){
 
 }
 
+
 function AddSearchHistory(omdbResponse){
     if(!historyTitles[historyTitles.indexOf(omdbResponse.Title)]){
         console.log("New entry to search history")
