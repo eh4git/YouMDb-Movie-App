@@ -10,8 +10,11 @@ Column on left side of application contains a search bar which the user can use 
 
 ## Features
 Utilizes the following API's:
+
 TasteDive API - Provides movie recommendations 
+
 Youtube Data API - Provides movie trailers from Youtube
+
 OMDB API - Returns wide variety of movie information
 
 ## Credits
