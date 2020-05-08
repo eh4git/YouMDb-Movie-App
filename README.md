@@ -1,1 +1,3 @@
-# Project1
+# YouMDb Entertainment Application
+
+## Description
