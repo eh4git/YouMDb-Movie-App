@@ -15,9 +15,9 @@ Youtube Data API - Provides movie trailers from Youtube
 OMDB API - Returns wide variety of movie information
 
 ## Credits
-Tristan Postley - 
-Chris Rico -
-Erik Hirsch -
+Tristan Postley - https://github.com/TristanPostley
+Chris Rico - https://github.com/chrisricola
+Erik Hirsch - https://github.com/eh4git
 
 ## Credits
 OMDB API - http://www.omdbapi.com/ (created by Brian Fritz)
