@@ -34,8 +34,8 @@ TasteDive API - https://tastedive.com/read/api
 YouTube Data - https://developers.google.com/youtube/v3
 
 ## Screenshot
-![Untitled10](https://user-images.githubusercontent.com/63271368/81448840-ea63f380-9133-11ea-8c46-e7598969c3bf.png)
+![Untitled10](https://user-images.githubusercontent.com/63271368/81484293-46dd1680-91f9-11ea-9f81-9f32cefb3939.png)
 
-![Untitled10](https://user-images.githubusercontent.com/63271368/81449061-46c71300-9134-11ea-9771-47f4750bd52e.png)
+
 
 
