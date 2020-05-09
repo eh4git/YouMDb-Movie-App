@@ -17,7 +17,7 @@ Youtube Data - Provides movie trailers from Youtube
 
 OMDB API - Returns wide variety of movie information
 
-## Credits
+## Collaborators
 Arash Bazrafshan - https://github.com/abazrafshan
 
 Tristan Postley - https://github.com/TristanPostley
