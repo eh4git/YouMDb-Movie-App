@@ -13,7 +13,7 @@ Utilizes the following API's and databases:
 
 TasteDive API - Provides movie recommendations 
 
-Youtube Data - Provides movie trailers from YouTube
+YouTube Data - Provides movie trailers from YouTube
 
 OMDB API - Returns wide variety of movie information
 
@@ -35,11 +35,11 @@ YouTube Data - https://developers.google.com/youtube/v3
 
 ## Screenshot
 
-![Untitled10](https://user-images.githubusercontent.com/63271368/81484293-46dd1680-91f9-11ea-9f81-9f32cefb3939.png)
+![Screen Shot1](https://user-images.githubusercontent.com/63271368/81484293-46dd1680-91f9-11ea-9f81-9f32cefb3939.png)
 
-![Untitled10](https://user-images.githubusercontent.com/63271368/81484321-7a1fa580-91f9-11ea-85f2-f0d86d2ffd47.png)
+![Screen Shot2](https://user-images.githubusercontent.com/63271368/81484321-7a1fa580-91f9-11ea-85f2-f0d86d2ffd47.png)
 
 ## Link
-https://abazrafshan.github.io/YouMDb-Movie-App/
+https://eh4git.github.io/YouMDb-Movie-App/
 
 
